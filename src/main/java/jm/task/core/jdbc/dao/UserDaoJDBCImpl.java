@@ -58,6 +58,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        System.out.printf("User с именем – %S добавлен в базу данных\n", name);
     }
 
     public void removeUserById(long id) {

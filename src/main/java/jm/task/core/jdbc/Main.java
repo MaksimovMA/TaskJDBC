@@ -21,13 +21,9 @@ public class Main {
         // После каждого добавления должен быть вывод в консоль
         // ( User с именем – name добавлен в базу данных )
         userService.saveUser(user.getName(),user.getLastName(),user.getAge());
-        System.out.printf("User с именем – %S добавлен в базу данных\n", user.getName());
         userService.saveUser(user1.getName(),user1.getLastName(),user1.getAge());
-        System.out.printf("User с именем – %S добавлен в базу данных\n", user1.getName());
         userService.saveUser(user2.getName(),user2.getLastName(),user2.getAge());
-        System.out.printf("User с именем – %S добавлен в базу данных\n", user2.getName());
         userService.saveUser(user4.getName(),user4.getLastName(),user4.getAge());
-        System.out.printf("User с именем – %S добавлен в базу данных\n", user4.getName());
         System.out.println(userService.getAllUsers().toString());
 
         //Очистка таблицы User(ов)
