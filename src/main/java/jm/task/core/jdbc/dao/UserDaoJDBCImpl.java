@@ -20,12 +20,14 @@ public class UserDaoJDBCImpl implements UserDao {
         Util util = new Util();
         try (Connection conn = util.getMySQLConnection();
              Statement statement = conn.createStatement()) {
+            conn.setAutoCommit(false);
             String sqlCommand = "CREATE TABLE IF NOT EXISTS " +
                     "User (id INT NOT NULL AUTO_INCREMENT," +
                     " Name VARCHAR(30)," +
                     " lastName VARCHAR(30), " +
                     "age TINYINT,  PRIMARY KEY (id))";
             statement.executeUpdate(sqlCommand);
+            conn.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -35,8 +37,10 @@ public class UserDaoJDBCImpl implements UserDao {
         Util util = new Util();
         try (Connection conn = util.getMySQLConnection();
              Statement statement = conn.createStatement()) {
+            conn.setAutoCommit(false);
             String sqlCommand = "DROP TABLE IF EXISTS User";
             statement.executeUpdate(sqlCommand);
+            conn.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -46,9 +50,11 @@ public class UserDaoJDBCImpl implements UserDao {
         Util util = new Util();
         try (Connection conn = util.getMySQLConnection();
              Statement statement = conn.createStatement()) {
+            conn.setAutoCommit(false);
             String sqlCommand = "INSERT User (name, lastName, age) " +
                     "VALUE ('" + name + "', '" + lastName + "', " + age + ")";
             statement.executeUpdate(sqlCommand);
+            conn.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -58,8 +64,10 @@ public class UserDaoJDBCImpl implements UserDao {
         Util util = new Util();
         try (Connection conn = util.getMySQLConnection();
              Statement statement = conn.createStatement()) {
+            conn.setAutoCommit(false);
             String sqlCommand = " DELETE FROM User WHERE Id = " + id;
             statement.executeUpdate(sqlCommand);
+            conn.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
