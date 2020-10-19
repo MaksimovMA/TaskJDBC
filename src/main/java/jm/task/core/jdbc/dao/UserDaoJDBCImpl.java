@@ -38,8 +38,9 @@ public class UserDaoJDBCImpl implements UserDao {
             try (PreparedStatement preparedStatement = conn.prepareStatement(sqlCommand)) {
                 preparedStatement.executeUpdate();
                 conn.commit();
-            } catch (SQLException e)
-            {conn.rollback();}
+            } catch (SQLException e) {
+                conn.rollback();
+            } //rollback()
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
