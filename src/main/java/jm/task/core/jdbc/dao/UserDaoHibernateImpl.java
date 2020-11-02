@@ -2,7 +2,6 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -23,9 +22,8 @@ public class UserDaoHibernateImpl implements UserDao {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             try {
-                Query query = session.createSQLQuery("CREATE TABLE IF NOT EXISTS User (id INT, name VARCHAR(20)," +
-                        " lastName VARCHAR(20), age INT)");
-                query.executeUpdate();
+                session.createSQLQuery("CREATE TABLE IF NOT EXISTS User (id INT, name VARCHAR(20)," +
+                        " lastName VARCHAR(20), age INT)").executeUpdate();
                 transaction.commit();
             } catch (Exception e) {
                 if (transaction != null) {
@@ -40,8 +38,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             try {
-                Query query = session.createSQLQuery("DROP TABLE if exists User");
-                query.executeUpdate();
+                session.createSQLQuery("DROP TABLE if exists User").executeUpdate();
                 transaction.commit();
             } catch (Exception e) {
                 if (transaction != null) {
@@ -107,8 +104,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             try {
-                Query query = session.createSQLQuery("DELETE FROM User");
-                query.executeUpdate();
+                session.createSQLQuery("DELETE FROM User").executeUpdate();
                 transaction.commit();
             } catch (Exception e) {
                 if (transaction != null) {
