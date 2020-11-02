@@ -18,9 +18,9 @@ public class Util {
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "12345678";
     private static final String POOL_SIZE = "2";
-    private static final String HBM_2_DDL_AUTO = "create";
+    private static final String HBM_2_DDL_AUTO = "update";
     private static final String HIBERNATE_DIALECT = "org.hibernate.dialect.MySQL5Dialect";
-    private static final String URL = "jdbc:mysql://localhost:3306/Test";
+    private static final String URL = "jdbc:mysql://localhost:3306/Test?serverTimezone=Europe/Moscow&useSSL=false";
 
     Session session = null;
 
